@@ -81,7 +81,7 @@ except ModuleNotFoundError:
 # ----------------------------------------------------------------------
 # Defaults - override any of these with command-line flags, see --help
 # ----------------------------------------------------------------------
-DEFAULT_RESOLVER_IP = "192.168.2.1"  # Point this at your Home Assistant host's IP
+DEFAULT_RESOLVER_IP = "127.0.0.1"  # Point this at your Home Assistant host's IP
 DEFAULT_RESOLVER_PORT = 53  # Home Detector's DNS listener (10053 internally, mapped to 53)
 DEFAULT_BASELINE_DOMAINS = ["example.com", "wikipedia.org"]  # "Normal" traffic for this fake device
 DEFAULT_ANOMALY_DOMAIN = "duckduckgo.com"  # Must be a real, resolvable domain, see docstring
