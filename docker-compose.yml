@@ -1,0 +1,27 @@
+services:
+  home-detector-dns-dummy:
+    build:
+      context: .
+    platform: linux/arm64
+    container_name: home-detector-dns-dummy
+
+    networks:
+      iot_lan:
+        ipv4_address: 192.168.2.30
+
+
+    environment:
+      RESOLVER_IP: "192.168.2.1"
+      RESOLVER_PORT: "53"
+
+    restart: unless-stopped
+
+networks:
+  iot_lan:
+    driver: macvlan
+    driver_opts:
+      parent: eth0
+    ipam:
+      config:
+        - subnet: 192.168.2.0/24
+          gateway: 192.168.2.1

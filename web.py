@@ -63,7 +63,7 @@ Endpoints:
     GET  /status   JSON: config + recent log (used by the page's auto-refresh)
     POST /trigger  fires one anomaly-domain lookup, returns JSON result
 """
-
+import os
 import argparse
 import random
 import threading
@@ -92,8 +92,8 @@ app = Flask(__name__)
 # background thread. Simple module-level config is fine, this app only
 # ever serves one operator on their own LAN.
 CONFIG = {
-    "resolver_ip": "192.168.2.1",
-    "resolver_port": 53,
+    "resolver_ip": os.getenv("RESOLVER_IP", "192.168.2.1"),
+    "resolver_port": int(os.getenv("RESOLVER_PORT", "53")),
     "baseline_domains": ["example.com", "wikipedia.org"],
     "anomaly_domain": "duckduckgo.com",
     "interval": 15,

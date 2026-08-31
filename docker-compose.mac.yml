@@ -1,0 +1,16 @@
+services:
+  home-detector-dns-dummy:
+    build:
+      context: .
+    container_name: home-detector-dns-dummy-local
+
+    ports:
+      - "127.0.0.1:8053:53/udp"
+      - "127.0.0.1:8053:53/tcp"
+      - "127.0.0.1:5000:5000"
+
+    environment:
+      RESOLVER_IP: "192.168.2.1"
+      RESOLVER_PORT: "53"
+
+    restart: unless-stopped
